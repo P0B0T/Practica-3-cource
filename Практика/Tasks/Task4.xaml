@@ -1,0 +1,227 @@
+﻿<Window
+    x:Class="Практика.Task4"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Практика"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Задание 4"
+    Width="800"
+    Height="450"
+    MinWidth="800"
+    MinHeight="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource AnimationWindow}" />
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.ContextMenu>
+        <ContextMenu>
+
+            <MenuItem
+                Click="CloseTask_Click"
+                Foreground="Black"
+                Header="Вернуться на главное окно" />
+
+            <MenuItem
+                Click="About_Click"
+                Foreground="Black"
+                Header="Описание задания" />
+
+            <MenuItem
+                Click="Clear_Click"
+                Foreground="Black"
+                Header="Очистить всё" />
+
+        </ContextMenu>
+    </Window.ContextMenu>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="112*" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="160" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+
+            <MenuItem
+                x:Name="CloseTask"
+                Click="CloseTask_Click"
+                Header="Вернуться на главное окно" />
+
+            <MenuItem
+                x:Name="About"
+                Click="About_Click"
+                Header="Описание задания" />
+
+        </Menu>
+
+        <ToolBar Grid.Row="1">
+
+            <Button
+                x:Name="Save"
+                Width="164"
+                Click="Save_Click"
+                Content="Сохранить матрицу"
+                Foreground="White" />
+
+            <Button
+                x:Name="Open"
+                Width="150"
+                Click="Open_Click"
+                Content="Открыть матрицу"
+                Foreground="White" />
+
+        </ToolBar>
+
+        <GroupBox Grid.Row="2" Header="Матрица">
+
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem
+                        Click="Save_Click"
+                        Foreground="Black"
+                        Header="Сохранить матрицу" />
+
+                    <MenuItem
+                        Click="Open_Click"
+                        Foreground="Black"
+                        Header="Открыть матрицу" />
+
+                </ContextMenu>
+            </GroupBox.ContextMenu>
+
+            <DataGrid
+                x:Name="Matrix"
+                CellEditEnding="Matrix_CellEditEnding"
+                Foreground="Black" />
+
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Header="Результат">
+
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem
+                        Click="ClearResult_Click"
+                        Foreground="Black"
+                        Header="Очистить результат" />
+
+                </ContextMenu>
+            </GroupBox.ContextMenu>
+
+            <Grid>
+
+                <TextBlock
+                    Width="475"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Text="Номер последнего из столбцов матрицы, содержащих равное количество положительных и отрицательных элементов:"
+                    TextAlignment="Center" />
+
+                <TextBox
+                    x:Name="NumberColumn"
+                    Width="117"
+                    Margin="480,6,0,3"
+                    HorizontalAlignment="Left"
+                    IsReadOnly="True" />
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="4" Header="Управление">
+
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem
+                        Click="ClearInput_Click"
+                        Foreground="Black"
+                        Header="Очистить поля ввода" />
+
+                </ContextMenu>
+            </GroupBox.ContextMenu>
+
+            <Grid>
+
+                <Label
+                    Height="30"
+                    Margin="2,0,469,0"
+                    VerticalAlignment="Top"
+                    Content="Введите размер матрицы:" />
+
+                <TextBox
+                    x:Name="Rows"
+                    Width="100"
+                    Margin="223,0,0,103"
+                    HorizontalAlignment="Left"
+                    TextChanged="Matrix_TextChanged"
+                    ToolTip="Кол-во строк" />
+
+                <TextBox
+                    x:Name="Columns"
+                    Width="100"
+                    Margin="330,0,0,103"
+                    HorizontalAlignment="Left"
+                    TextChanged="Matrix_TextChanged"
+                    ToolTip="Кол-во столбцов" />
+
+                <Separator Margin="0,35,0,93" />
+
+                <Label
+                    Margin="0,43,379,0"
+                    VerticalAlignment="Top"
+                    Content="Введите диапазон значений матрицы:" />
+
+                <TextBox
+                    x:Name="Min"
+                    Width="100"
+                    Margin="304,43,0,60"
+                    HorizontalAlignment="Left"
+                    TextChanged="Matrix_TextChanged"
+                    ToolTip="Минимальное значение" />
+
+                <TextBox
+                    x:Name="Max"
+                    Width="100"
+                    Margin="409,43,0,60"
+                    HorizontalAlignment="Left"
+                    TextChanged="Matrix_TextChanged"
+                    ToolTip="Максимальное значение" />
+
+
+                <Separator Margin="0,80,0,48" />
+
+                <Button
+                    x:Name="CreateMatrix"
+                    Margin="10,92,0,0"
+                    Click="CreateMatrix_Click"
+                    Content="Создать матрицу" />
+
+                <Button
+                    x:Name="Start"
+                    Margin="170,92,0,0"
+                    Click="Start_Click"
+                    Content="Выполнить задание" />
+
+                <Button
+                    x:Name="Clear"
+                    Margin="330,92,0,0"
+                    Click="Clear_Click"
+                    Content="Очистить всё" />
+
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

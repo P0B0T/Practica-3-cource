@@ -1,0 +1,96 @@
+﻿<Window
+    x:Class="Практика.Task2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Практика"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Задание 2"
+    Width="402"
+    Height="278"
+    ResizeMode="CanMinimize"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource AnimationWindow}" />
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.ContextMenu>
+        <ContextMenu>
+
+            <MenuItem
+                Click="CloseTask_Click"
+                Foreground="Black"
+                Header="Вернуться на главное окно" />
+
+            <MenuItem
+                Click="About_Click"
+                Foreground="Black"
+                Header="Описание задания" />
+
+            <MenuItem
+                Click="Start_Click"
+                Foreground="Black"
+                Header="Выполнить задание" />
+
+        </ContextMenu>
+    </Window.ContextMenu>
+
+    <Grid>
+
+        <Menu Margin="0,0,0,234" HorizontalAlignment="Center">
+
+            <MenuItem
+                x:Name="CloseTask"
+                Click="CloseTask_Click"
+                Header="Вернуться на главное окно" />
+
+            <MenuItem
+                x:Name="About"
+                Click="About_Click"
+                Header="Описание задания" />
+
+        </Menu>
+
+        <Label
+            Margin="92,33,82,0"
+            VerticalAlignment="Top"
+            Content="Введите три целых числа:" />
+
+        <TextBox
+            x:Name="InputFirstNumber"
+            Margin="5,68,267,168"
+            TextChanged="InputNumber_TextChanged" />
+
+        <TextBox
+            x:Name="InputSecondNumber"
+            Margin="135,68,137,168"
+            TextChanged="InputNumber_TextChanged" />
+
+        <TextBox
+            x:Name="InputThirdNumber"
+            Margin="265,68,7,168"
+            TextChanged="InputNumber_TextChanged" />
+
+        <Button
+            x:Name="Start"
+            Margin="0,120,0,101"
+            HorizontalAlignment="Center"
+            Click="Start_Click"
+            Content="Выполнить задание" />
+
+        <Label
+            Margin="67,173,69,0"
+            VerticalAlignment="Top"
+            Content="Сумма двух наибольших чисел:" />
+
+        <TextBox
+            x:Name="Sum"
+            Margin="105,208,107,28"
+            IsReadOnly="True" />
+
+    </Grid>
+</Window>

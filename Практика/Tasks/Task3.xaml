@@ -1,0 +1,249 @@
+﻿<Window
+    x:Class="Практика.Task3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Практика"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Задание 3"
+    Width="800"
+    MinWidth="800"
+    MinHeight="458"
+    MaxHeight="458"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource AnimationWindow}" />
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.ContextMenu>
+        <ContextMenu>
+
+            <MenuItem
+                Click="CloseTask_Click"
+                Foreground="Black"
+                Header="Вернуться на главное окно" />
+
+            <MenuItem
+                Click="About_Click"
+                Foreground="Black"
+                Header="Описание задания" />
+
+            <MenuItem
+                Click="Clear_Click"
+                Foreground="Black"
+                Header="Очистить всё" />
+
+        </ContextMenu>
+    </Window.ContextMenu>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="75" />
+            <RowDefinition Height="115" />
+            <RowDefinition Height="160" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+
+            <MenuItem
+                x:Name="CloseTask"
+                Click="CloseTask_Click"
+                Header="Вернуться на главное окно" />
+
+            <MenuItem
+                x:Name="About"
+                Click="About_Click"
+                Header="Описание задания" />
+
+        </Menu>
+
+        <ToolBar Grid.Row="1">
+
+            <Button
+                x:Name="Save"
+                Width="150"
+                Click="Save_Click"
+                Content="Сохранить массив"
+                Foreground="White" />
+
+            <Button
+                x:Name="Open"
+                Width="150"
+                Click="Open_Click"
+                Content="Открыть массив"
+                Foreground="White" />
+
+        </ToolBar>
+
+        <GroupBox Grid.Row="2" Header="Одномерный массив">
+
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem
+                        Click="Save_Click"
+                        Foreground="Black"
+                        Header="Сохранить массив" />
+
+                    <MenuItem
+                        Click="Open_Click"
+                        Foreground="Black"
+                        Header="Открыть массив" />
+
+                </ContextMenu>
+            </GroupBox.ContextMenu>
+
+            <DataGrid
+                x:Name="Array"
+                CellEditEnding="Array_CellEditEnding"
+                Foreground="Black" />
+
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Header="Результат">
+
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem
+                        Click="ClearResult_Click"
+                        Foreground="Black"
+                        Header="Очистить результат" />
+
+                </ContextMenu>
+            </GroupBox.ContextMenu>
+
+            <Grid>
+
+                <Label
+                    Margin="0,0,427,0"
+                    VerticalAlignment="Top"
+                    Content="Кол-во элементов, попадающих в интервал:" />
+
+                <TextBox
+                    x:Name="CountItems"
+                    Width="117"
+                    Margin="361,0,0,54"
+                    HorizontalAlignment="Left"
+                    IsReadOnly="True" />
+
+                <Label
+                    Margin="0,43,490,0"
+                    VerticalAlignment="Top"
+                    Content="Элементы, попадающие в интервал:" />
+
+                <DataGrid
+                    x:Name="Items"
+                    Margin="285,39,0,0"
+                    Foreground="Black"
+                    IsReadOnly="True" />
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="4" Header="Управление">
+
+            <GroupBox.ContextMenu>
+                <ContextMenu>
+
+                    <MenuItem
+                        Click="ClearInput_Click"
+                        Foreground="Black"
+                        Header="Очистить поля ввода" />
+
+                </ContextMenu>
+            </GroupBox.ContextMenu>
+
+            <Grid>
+
+                <Label
+                    Height="30"
+                    Margin="2,0,526,0"
+                    VerticalAlignment="Top"
+                    Content="Введите интервал:" />
+
+                <TextBox
+                    x:Name="ValueMin"
+                    Width="100"
+                    Margin="152,0,0,103"
+                    HorizontalAlignment="Left"
+                    TextChanged="Value_TextChanged"
+                    ToolTip="Минимальное значение" />
+
+                <TextBox
+                    x:Name="ValueMax"
+                    Width="100"
+                    Margin="257,0,0,103"
+                    HorizontalAlignment="Left"
+                    TextChanged="Value_TextChanged"
+                    ToolTip="Максимальное значение" />
+
+                <Label
+                    Margin="371,0,107,0"
+                    VerticalAlignment="Top"
+                    Content="Введите длину массива:" />
+
+                <TextBox
+                    x:Name="ArrayLenght"
+                    Width="100"
+                    Margin="568,0,0,103"
+                    HorizontalAlignment="Left"
+                    TextChanged="Array_TextChanged"
+                    ToolTip="Максимальное значение" />
+
+                <Separator Margin="0,35,0,93" />
+
+                <Label
+                    Margin="0,43,388,0"
+                    VerticalAlignment="Top"
+                    Content="Введите диапазон значений массива:" />
+
+                <TextBox
+                    x:Name="Min"
+                    Width="100"
+                    Margin="304,43,0,60"
+                    HorizontalAlignment="Left"
+                    TextChanged="Array_TextChanged"
+                    ToolTip="Минимальное значение" />
+
+                <TextBox
+                    x:Name="Max"
+                    Width="100"
+                    Margin="409,43,0,60"
+                    HorizontalAlignment="Left"
+                    TextChanged="Array_TextChanged"
+                    ToolTip="Максимальное значение" />
+
+
+                <Separator Margin="0,80,0,48" />
+
+                <Button
+                    x:Name="CreateArray"
+                    Margin="10,92,0,0"
+                    Click="CreateArray_Click"
+                    Content="Создать массив" />
+
+                <Button
+                    x:Name="Start"
+                    Margin="170,92,0,0"
+                    Click="Start_Click"
+                    Content="Выполнить задание" />
+
+                <Button
+                    x:Name="Clear"
+                    Margin="330,92,0,0"
+                    Click="Clear_Click"
+                    Content="Очистить всё" />
+
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>
